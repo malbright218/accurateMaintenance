@@ -1,10 +1,22 @@
-$(document).ready(function() {
- 
-    $("#signUpButton").click(function() {
-        console.log("clicked")
-        $("#signInCard").css("visibility", "hidden")
-        
+$(document).ready(function () {
+    $("#signUpButton").click(function () {
+        window.location.href = "signup.html"
     })
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
