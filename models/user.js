@@ -23,14 +23,11 @@ module.exports = function (sequelize, DataTypes) {
             }
         }
     });
-
     User.associate = function (models) {
-        User.belongsTo(models.Company, {
-            foreignKey: {
-                allowNull: false
-            }
-        });
+        // Associating a User with work orders
+        User.hasMany(models.Company)
     };
+    
 
     User.associate = function (models) {
         // Associating a User with work orders

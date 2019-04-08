@@ -4,15 +4,17 @@ module.exports = function(sequelize, DataTypes) {
         address: DataTypes.STRING,
         city: DataTypes.STRING,
         state: DataTypes.STRING,
-        zip: DataTypes.STRING
+        zip: DataTypes.STRING,
+        depts: DataTypes.STRING
     });
 
-    Company.associate = function(models) {
-        // Associating a company with Users and Departments
-        Company.hasMany(
-            models.User
-            );
-    }
+    Company.associate = function (models) {
+        Company.belongsTo(models.User, {
+            foreignKey: {
+                allowNull: false
+            }
+        });
+    };
 
     Company.associate = function(models) {
         Company.hasMany(models.Department);
