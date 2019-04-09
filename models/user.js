@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
             allowNull: false,
         },
         userName: {
-            type: DataTypes.STRING,
+            type: DataTypes.TEXT,
             allowNull: false,
             validate: {
                 isEmail: true
@@ -24,15 +24,15 @@ module.exports = function (sequelize, DataTypes) {
         }
     });
     User.associate = function (models) {
-        // Associating a User with work orders
+        // Associating a User with a company
         User.hasMany(models.Company)
     };
     
 
-    User.associate = function (models) {
-        // Associating a User with work orders
-        User.hasMany(models.WorkOrder)
-    };
+    // User.associate = function (models) {
+    //     // Associating a User with work orders
+    //     User.hasMany(models.WorkOrder)
+    // };
 
     return User;
 }
