@@ -17,6 +17,16 @@ position: relative;
 margin: 10px auto;
 }
 
+.card-body {
+    text-align: left;
+    color: #FFC312;
+}
+
+
+.pulse {
+    background-color: #FFC312;
+}
+
 .card{
 top: 20px;
 margin: 8px;
@@ -24,6 +34,11 @@ background-color: rgba(0,0,0,0.5) !important;
 float: left;
 
 
+}
+
+#companyName {
+    background-color: #FFC312;
+    width: 100%;
 }
 
 #signUpDivButton{

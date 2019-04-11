@@ -63,15 +63,16 @@ $(document).ready(function () {
         UserId: userID
       }
       submitCompany(newCompany)
+      newWindow();
     }
   }
 
   function newWindow() {
-    window.location.href = "department.html"
+    window.location.href = "portal.html"
   }
 
   function submitCompany(comp) {
-    $.post("/api/company", comp).then(newWindow)
+    $.post("/api/company", comp)
   }
 
 

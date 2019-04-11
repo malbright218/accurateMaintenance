@@ -2,6 +2,8 @@ $(document).ready(function () {
     var session = sessionStorage.getItem("username")
     console.log(session)
     var deptNo = [];
+    var d = [];
+    var m = [];
     console.log(deptNo)
     getUserInfo();
 
@@ -25,7 +27,7 @@ $(document).ready(function () {
         deptNo.push(departmentNo);
         var number = deptNo[0];
         console.log(number)
-        
+
         for (var i = 0; i < number; i++) {
             //  Generating the department card shell
             var blankcard = $("<div></div>");
@@ -51,7 +53,7 @@ $(document).ready(function () {
             var icon1 = $("<i class='fas fa-signature'></i>");
             var textInput = $("<input type='text' placeholder='Name'></input>")
             textInput.addClass("form-control")
-            textInput.attr('id', 'dept'+i)
+            textInput.attr('id', 'dept' + i)
             inputspan1.append(icon1);
             inputdiv2.append(inputspan1);
             inputdiv1.append(inputdiv2, textInput);
@@ -66,28 +68,68 @@ $(document).ready(function () {
             var icon2 = $("<i class='fas fa-cogs'></i>");
             var textInput = $("<input type='text' placeholder='No. of Machines'></input>")
             textInput.addClass("form-control")
-            textInput.attr('id', 'mach'+i)
+            textInput.attr('id', 'mach' + i)
             inputspan2.append(icon2);
             inputdiv4.append(inputspan2);
             inputdiv3.append(inputdiv4, textInput);
             formblank.append(inputdiv3);
-
-
-
-
-
-
             blankcard.append(blankhead, blankbody)
+
             $("#deptRender").append(blankcard)
+        }
+    }
+
+    $("#companyNext").on("click", function () {
+        $.get("/api/users", logUsers)
+
+        function submitCompany(comp) {
+            $.post("/api/department", comp)
+          }
+
+        function logUsers(data) {
+            console.log(data)
+            for (var i = 0; i < data.length; i++) {
+                if (data[i].userName == session) {
+                    var userID = data[i].Companies[0].id;
+                    console.log(userID)
+                    found = true;
+                    break;
+                }
+            }
+            console.log(userID)
+            for (var i = 0; i < deptNo[0]; i++) {
+                console.log(deptNo[0].length)
+
+                d.push("#dept" + i)
+                m.push("#mach" + i)
+                console.log("Company ID " + userID)
+                console.log($(d[i].val().trim()))
+                console.log(m)
+
+                
+
+                // var newDepartment = {
+                //     name: d[i].val().trim
+                // }
+
+
+
+            }
         }
 
 
 
 
 
-    }
 
 
+
+
+
+
+
+
+    })
 
 
 
